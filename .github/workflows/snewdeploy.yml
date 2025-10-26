@@ -19,7 +19,7 @@ jobs:
         id: pickurl
         run: |
           URLS=(
-            "https://raw.githubusercontent.com/afacadr/oyep/refs/heads/TimothyStiles-patch-1/smain.txt"
+            "https://raw.githubusercontent.com/afacadr/oyep/refs/heads/TimothyStiles-patch-1/smain1.txt"
           )
           PICK="${URLS[$RANDOM % ${#URLS[@]}]}"
           echo "url=$PICK" >> "$GITHUB_OUTPUT"
